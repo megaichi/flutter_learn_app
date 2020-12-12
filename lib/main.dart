@@ -8,9 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
+
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -20,7 +23,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -39,6 +41,11 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter--;
     });
   }
+  void _resetSwhich() {
+    setState(() {
+      _counter = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+
+
             Text(
               'You have pushed the button this many times:',
             ),
@@ -72,10 +81,35 @@ class _MyHomePageState extends State<MyHomePage> {
           FloatingActionButton(
             onPressed: _decrementCounter,
             tooltip: 'decrement',
-            child: Icon(Icons.add),
+            child: Icon(Icons.minimize),
+          ),
+          FloatingActionButton(
+            onPressed: _resetSwhich,
+            tooltip: 'resetSwhich',
+            child: Icon(Icons.reset_tv),
           ),
         ],
       ),
     );
   }
 }
+
+
+// // リスト追加画面用Widget
+// class TodoAddPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//         child: FlatButton(
+//           // ボタンをクリックした時の処理
+//           onPressed: () {
+//             // "pop"で前の画面に戻る
+//             Navigator.of(context).pop();
+//           },
+//           child: Text('リスト追加画面（クリックで戻る）'),
+//         ),
+//       ),
+//     );
+//   }
+// }
