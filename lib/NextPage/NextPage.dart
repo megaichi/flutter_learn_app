@@ -5,7 +5,6 @@ class NextPage extends StatelessWidget {
   final String name;
   NextPage(this.name);
   
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
